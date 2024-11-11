@@ -6,18 +6,23 @@ const About = () => {
   const [companyInfo, setCompanyInfo] = useState(null);
 
   useEffect(() => {
-    getAboutCompany().then(setCompanyInfo).catch((error) => console.error(error.message));
+    getAboutCompany()
+      .then((data) => setCompanyInfo(data))
+      .catch((error) => console.error(error.message));
   }, []);
 
   return (
     <div className="container mt-4">
       <h1>About Us</h1>
-      {companyInfo && (
+      {companyInfo ? (
         <div>
           <p>{companyInfo.description}</p>
           <p>Contact: {companyInfo.contact}</p>
           <p>Email: {companyInfo.email}</p>
+          <p>Instagram: {companyInfo.instagram}</p>
         </div>
+      ) : (
+        <p>Loading company information...</p>
       )}
     </div>
   );
