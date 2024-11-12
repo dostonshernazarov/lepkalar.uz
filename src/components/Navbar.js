@@ -1,19 +1,25 @@
+// src/components/Navbar.js
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import './Navbar.css';
 
-const Navbar = () => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="container">
-      <Link className="navbar-brand" to="/">Shop Mouldings</Link>
-      <div className="collapse navbar-collapse">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-          <li className="nav-item"><Link className="nav-link" to="/mouldings">Mouldings</Link></li>
-          <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
-        </ul>
+const Navbar = () => {
+  return (
+    <nav className="navbar">
+      <div className="navbar-logo">Mouldings Shop</div>
+      <div className="navbar-links">
+        <NavLink to="/" className="nav-button" activeClassName="active">
+          Home
+        </NavLink>
+        <NavLink to="/mouldings" className="nav-button" activeClassName="active">
+          Mouldings
+        </NavLink>
+        <NavLink to="/about" className="nav-button" activeClassName="active">
+          About
+        </NavLink>
       </div>
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
 
 export default Navbar;
