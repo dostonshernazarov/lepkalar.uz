@@ -1,36 +1,45 @@
 // src/pages/ProductDetails.js
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getMouldingById } from '../api/apiService';
+import { useParams, Link } from 'react-router-dom';
+import './ProductDetails.css';
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    getMouldingById(id).then(setProduct).catch((error) => console.error(error.message));
+    // Fetch the product details by ID
+    fetch(`https://api.lepkalar.uz/v1/mouldings/${id}`)
+      .then((response) => response.json())
+      .then((data) => setProduct(data));
   }, [id]);
 
+  if (!product) {
+    return <p>Loading product details...</p>;
+  }
+
   return (
-    <div className="container mt-4">
-      {product ? (
-        <>
+    <div className="product-details-container">
+      <div className="product-details">
+        {/* Product Image */}
+        <div className="product-image">
+          <img src={product.photos[0]} alt={product.name} />
+        </div>
+
+        {/* Product Information */}
+        <div className="product-info">
           <h1>{product.name}</h1>
-          <p>Category: {product.category}</p>
-          <p>Material: {product.material}</p>
-          <p>Price: ${product.price}</p>
-          <p>{product.description}</p>
-          {product.photos && (
-            <div>
-              {product.photos.map((photo, index) => (
-                <img key={index} src={photo} alt={`${product.name} ${index}`} className="img-fluid" />
-              ))}
-            </div>
-          )}
-        </>
-      ) : (
-        <p>Loading...</p>
-      )}
+          <p className="product-price">${product.price.toFixed(2)}/{product.unity}</p>
+          <p className="product-category">{product.category}</p>
+          <p className="product-material">Material: {product.material}</p>
+          <p className="product-description">{product.description}</p>
+
+          {/* Back Button */}
+          <Link to="/mouldings" className="back-button">
+            &larr; Back to Mouldings
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

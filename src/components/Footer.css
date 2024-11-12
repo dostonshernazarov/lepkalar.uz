@@ -1,28 +1,31 @@
 /* src/components/Footer.css */
 .footer {
   background-color: #333;
-  color: #f0f0f0;
-  padding: 20px 0;
+  color: #fff;
+  padding: 20px;
   text-align: center;
 }
 
 .footer-content {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
 }
 
+.footer-content h4 {
+  color: #fff;
+}
+
+
 .footer-section {
-  flex: 1 1 250px;
+  flex: 1 1 70px;
   margin: 10px;
 }
 
-.footer-section h2, .footer-section h3 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+.footer-section h2, .footer-section h3  {
+  font-size: 2.2em;
+  margin-bottom: 7px;
+  color: #fff;
 }
 
 .footer-section p {
@@ -30,21 +33,22 @@
   font-size: 0.9em;
 }
 
+.footer h4 {
+  margin-bottom: 10px;
+}
+
 .social-icons {
   display: flex;
   gap: 15px;
-  justify-content: center;
-  padding-top: 10px;
 }
 
 .social-icons a {
-  color: #f0f0f0;
-  font-size: 1.2em;
-  transition: color 0.3s;
+  color: #fff;
+  transition: color 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #007bff;
+  color: #1da1f2; /* Adjust the color for hover */
 }
 
 .footer-bottom {
@@ -55,4 +59,9 @@
 
 .footer-bottom p {
   margin: 0;
+}
+
+.footer-contact p {
+  text-align: center;
+  color: #fff;
 }

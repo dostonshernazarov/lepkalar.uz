@@ -1,44 +1,76 @@
-// src/components/Footer.js
-import React from 'react';
-import './Footer.css';
+import React, { useEffect, useState } from 'react';
+import { getAboutCompany } from '../api/apiService';
+import './Footer.css'; // Ensure your Footer styling is updated here
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTelegram, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
+  const [companyInfo, setCompanyInfo] = useState({
+    telegram: '',
+    instagram: '',
+    email: ''
+  });
+
+    useEffect(() => {
+    getAboutCompany().then(setCompanyInfo);
+  }, []);
+
   return (
     <footer className="footer">
       <div className="footer-content">
+
         <div className="footer-section">
-          <h2>Lepkalar</h2>
+          <h2>Lepkalar.uz</h2>
           <p>High-quality mouldings for all your needs.</p>
+          <h4>Connect with us:</h4>
+        </div>
+        <div className="social-icons">
+          {/* Telegram Icon */}
+          <a href={companyInfo.telegram} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faTelegram} size="2x" />
+          </a>
+
+          {/* Instagram Icon */}
+          <a href={companyInfo.instagram} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faInstagram} size="2x" />
+          </a>
+
+          {/* Email Icon */}
+          <a href={companyInfo.email} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faEnvelope} size="2x" />
+          </a>
+
         </div>
 
-        <div className="footer-section">
-          <h3>Contact Us</h3>
-          <p>Email: azizjone304@gmail.com</p>
-          <p>Phone: +998 99 282 77 88</p>
-          <p>Telegram: <a href={"https://t.me/of_the_bes"} target="_blank" rel="noopener noreferrer">Telegram</a></p>
-          <p>Instagram: <a href={"https://www.instagram.com/of_the_best77/profilecard/?igsh=MWdqYmZ6d2tucjE1Zw=="} target="_blank" rel="noopener noreferrer">Instagram</a></p>
-        </div>
-
-        <div className="footer-section">
-          <h3>Follow Us</h3>
-          <div className="social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter"></i>
-            </a>
-          </div>
-        </div>
       </div>
-      <div className="footer-bottom">
-        <p>&copy; 2023 Mouldings Shop. All rights reserved.</p>
-      </div>
+      <div className='footer-contact'>
+          {/* Tel */}
+          <p> {companyInfo.contact} </p>
+        </div>
     </footer>
   );
 };
 
 export default Footer;
+
+
+
+//   return (
+//     <div className="container mt-4 about-section">
+//       <h1>About Us</h1>
+//       {companyInfo ? (
+//         <div>
+//           <p>{companyInfo.description}</p>
+//           <p>Contact: {companyInfo.contact}</p>
+//           <p>Email: {companyInfo.email}</p>
+//           <p>Follow us on <a href={companyInfo.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></p>
+//         </div>
+//       ) : (
+//         <p>Loading company information...</p>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default About;

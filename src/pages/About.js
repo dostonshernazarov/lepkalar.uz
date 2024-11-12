@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAboutCompany } from '../api/apiService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTelegram, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const About = () => {
   const [companyInfo, setCompanyInfo] = useState(null);
@@ -16,7 +18,15 @@ const About = () => {
           <p>{companyInfo.description}</p>
           <p>Contact: {companyInfo.contact}</p>
           <p>Email: {companyInfo.email}</p>
-          <p>Follow us on <a href={companyInfo.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></p>
+          <p>Follow us on: </p>
+          {/* Telegram Icon */}
+          <a href={companyInfo.telegram} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faTelegram} size="2x" />
+          </a>
+          {/* Telegram Icon */}
+          <a href={companyInfo.instagram} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faInstagram} size="2x" />
+          </a>
         </div>
       ) : (
         <p>Loading company information...</p>
