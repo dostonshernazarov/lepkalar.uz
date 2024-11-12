@@ -8,7 +8,7 @@ const Header = () => {
     <header className="header">
       <div className="header-overlay">
         <div className="header-content">
-          <h1>Welcome to Mouldings Shop</h1>
+          <h1>Welcome to Lepkalar.uz</h1>
           <p>Discover exquisite mouldings and design elements</p>
           <div className="header-buttons">
             <Link to="/mouldings" className="header-button">

@@ -7,15 +7,16 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section">
-          <h2>Mouldings Shop</h2>
+          <h2>Lepkalar</h2>
           <p>High-quality mouldings for all your needs.</p>
         </div>
 
         <div className="footer-section">
           <h3>Contact Us</h3>
-          <p>Email: info@mouldingshop.com</p>
-          <p>Phone: +123 456 7890</p>
-          <p>Address: 123 Moulding St., Design City</p>
+          <p>Email: azizjone304@gmail.com</p>
+          <p>Phone: +998 99 282 77 88</p>
+          <p>Telegram: <a href={"https://t.me/of_the_bes"} target="_blank" rel="noopener noreferrer">Telegram</a></p>
+          <p>Instagram: <a href={"https://www.instagram.com/of_the_best77/profilecard/?igsh=MWdqYmZ6d2tucjE1Zw=="} target="_blank" rel="noopener noreferrer">Instagram</a></p>
         </div>
 
         <div className="footer-section">
