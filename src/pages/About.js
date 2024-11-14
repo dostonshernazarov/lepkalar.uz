@@ -24,6 +24,7 @@ const About = () => {
 
         <div className="contact-info">
           <h2>Contact Us</h2>
+          <p>Phone: {aboutInfo.contact}</p>
           <p>Email: <a href={`mailto:${aboutInfo.email}`} className="contact-link">{aboutInfo.email}</a></p>
           <p>Telegram: <a href={aboutInfo.telegram} target="_blank" rel="noopener noreferrer" className="contact-link">Telegram</a></p>
           <p>Instagram: <a href={aboutInfo.instagram} target="_blank" rel="noopener noreferrer" className="contact-link">Instagram</a></p>
