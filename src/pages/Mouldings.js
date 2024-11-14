@@ -9,7 +9,7 @@ const Mouldings = () => {
   const [mouldings, setMouldings] = useState([]);
   const [filters, setFilters] = useState({ category: '', material: '' });
   const [page, setPage] = useState(1); // Track the current page
-  const [limit] = useState(10); // Set the limit of items per page
+  const [limit] = useState(40); // Set the limit of items per page
   const [totalItems, setTotalItems] = useState(0); // Track total number of mouldings
 
   useEffect(() => {

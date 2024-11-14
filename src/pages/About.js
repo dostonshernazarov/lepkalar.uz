@@ -1,36 +1,35 @@
+// src/pages/About.js
 import React, { useEffect, useState } from 'react';
-import { getAboutCompany } from '../api/apiService';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTelegram, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import './About.css';
 
 const About = () => {
-  const [companyInfo, setCompanyInfo] = useState(null);
+  const [aboutInfo, setAboutInfo] = useState(null);
 
   useEffect(() => {
-    getAboutCompany().then(setCompanyInfo);
+    // Fetch About information from the API
+    fetch('https://api.lepkalar.uz/v1/about')
+      .then(response => response.json())
+      .then(data => setAboutInfo(data));
   }, []);
 
+  if (!aboutInfo) {
+    return <p>Loading about information...</p>;
+  }
+
   return (
-    <div className="container mt-4 about-section">
-      <h1>About Us</h1>
-      {companyInfo ? (
-        <div>
-          <p>{companyInfo.description}</p>
-          <p>Contact: {companyInfo.contact}</p>
-          <p>Email: {companyInfo.email}</p>
-          <p>Follow us on: </p>
-          {/* Telegram Icon */}
-          <a href={companyInfo.telegram} target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faTelegram} size="2x" />
-          </a>
-          {/* Telegram Icon */}
-          <a href={companyInfo.instagram} target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faInstagram} size="2x" />
-          </a>
+    <div className="about-container">
+      <section className="about-content">
+        <h1>About Our Company</h1>
+        <p className="about-description">{aboutInfo.description}</p>
+
+        <div className="contact-info">
+          <h2>Contact Us</h2>
+          <p>Email: <a href={`mailto:${aboutInfo.email}`} className="contact-link">{aboutInfo.email}</a></p>
+          <p>Telegram: <a href={aboutInfo.telegram} target="_blank" rel="noopener noreferrer" className="contact-link">Telegram</a></p>
+          <p>Instagram: <a href={aboutInfo.instagram} target="_blank" rel="noopener noreferrer" className="contact-link">Instagram</a></p>
+          <p>Facebook: <a href={aboutInfo.facebook} target="_blank" rel="noopener noreferrer" className="contact-link">Facebook</a></p>
         </div>
-      ) : (
-        <p>Loading company information...</p>
-      )}
+      </section>
     </div>
   );
 };

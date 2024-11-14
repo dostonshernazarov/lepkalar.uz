@@ -14,9 +14,9 @@ const Home = () => {
       .then(data => setAbout(data));
 
     // Fetch featured mouldings (example, limit results)
-    fetch('https://api.lepkalar.uz/v1/mouldings/list')
+    fetch('https://api.lepkalar.uz/v1/mouldings/list?limit=20')
       .then(response => response.json())
-      .then(data => setFeaturedMouldings(data.mouldings.slice(0, 8))); // Limit to 3 for featured
+      .then(data => setFeaturedMouldings(data.mouldings.slice(0, 20))); // Limit to 3 for featured
   }, []);
 
   return (
