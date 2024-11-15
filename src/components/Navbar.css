@@ -3,10 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 30px;
+  padding: 15px 20px; /* Adjust padding for better fit on mobile */
   background-color: #333;
   color: #e2dada;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box; /* Ensures padding is included in width */
+  overflow: hidden; /* Prevent content overflow */
 }
 
 .navbar-logo {
@@ -17,6 +21,7 @@
 .navbar-links {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap; /* Ensure links wrap on smaller screens */
 }
 
 .nav-button {
@@ -38,4 +43,22 @@
   background-color: #007bff;
   border-color: #007bff;
   color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack logo and links vertically */
+    align-items: flex-start;
+    padding: 10px 15px; /* Reduce padding for smaller screens */
+  }
+
+  .navbar-links {
+    width: 100%; /* Ensure links take up full width */
+    justify-content: flex-start;
+  }
+
+  .nav-button {
+    padding: 8px 10px; /* Adjust button padding for smaller screens */
+  }
 }
