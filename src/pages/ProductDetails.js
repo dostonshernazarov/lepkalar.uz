@@ -6,12 +6,18 @@ import './ProductDetails.css';
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [contactInfo, setContactInfo] = useState(null);
 
   useEffect(() => {
     // Fetch the product details by ID
     fetch(`https://api.lepkalar.uz/v1/mouldings/${id}`)
       .then((response) => response.json())
       .then((data) => setProduct(data));
+
+    // Fetch the company's contact information
+    fetch('https://api.lepkalar.uz/v1/about')
+      .then((response) => response.json())
+      .then((data) => setContactInfo(data));
   }, [id]);
 
   if (!product) {
@@ -29,8 +35,8 @@ const ProductDetails = () => {
         {/* Product Information */}
         <div className="product-info">
           <h1>{product.name}</h1>
-          <p className="product-price">${product.price.toFixed(2)}/{product.unity}</p>
-          <p className="product-category">{product.category}</p>
+          <p className="product-price">${product.price.toFixed(2)}</p>
+          <p className="product-category">Category: {product.category}</p>
           <p className="product-material">Material: {product.material}</p>
           <p className="product-description">{product.description}</p>
 
@@ -40,6 +46,17 @@ const ProductDetails = () => {
           </Link>
         </div>
       </div>
+
+      {/* Contact Information Section */}
+      {contactInfo && (
+        <div className="contact-section">
+          <h2>Contact Us</h2>
+          <p>{contactInfo.contact}</p>
+          <p>Email: <a href={`mailto:${contactInfo.email}`} className="contact-link">{contactInfo.email}</a></p>
+          <p>Telegram: <a href={contactInfo.telegram} target="_blank" rel="noopener noreferrer" className="contact-link">Telegram</a></p>
+          <p>Instagram: <a href={contactInfo.instagram} target="_blank" rel="noopener noreferrer" className="contact-link">Instagram</a></p>
+        </div>
+      )}
     </div>
   );
 };
