@@ -35,7 +35,6 @@ const ProductDetails = () => {
         {/* Product Information */}
         <div className="product-info">
           <h1>{product.name}</h1>
-          <p className="product-price">${product.price.toFixed(2)}</p>
           <p className="product-description">{product.description}</p>
           <p className="product-material">Materials: {product.material}</p>
 
